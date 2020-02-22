@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Rick &amp; Morty</string>
+    <string name="retry">Retry</string>
+    <string name="base_url">https://rickandmortyapi.com/api/</string>
+    <string name="network_error">No internet connection</string>
+    <string name="generic_error">Something went wrong. Please try again later</string>
+    <string name="loading">Loading...</string>
+</resources>
