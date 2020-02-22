@@ -9,15 +9,15 @@ import androidx.paging.DataSource
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.reddit.rickmorty.CoroutineContextProvider
+import com.reddit.rickmorty.domain.FetchCharactersUseCase
 import com.reddit.rickmorty.model.CharactersPageDataSource
 import com.reddit.rickmorty.model.dto.CharacterDto
-import com.reddit.rickmorty.domain.CharactersRepository
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
 class CharactersListViewModel(
     contextProvider: CoroutineContextProvider,
-    private val charactersApi: CharactersRepository
+    private val charactersApi: FetchCharactersUseCase
 ) : ViewModel() {
 
     lateinit var dataSource: CharactersPageDataSource
@@ -25,21 +25,22 @@ class CharactersListViewModel(
     val status = MutableLiveData<CharacterListState>(CharacterListState.Idle)
 
     val charactersList: LiveData<PagedList<CharacterDto>> by lazy {
-
-        dataSource =
-            CharactersPageDataSource { page, callback ->
-                viewModelScope.launch(handler) {
-                    status.postValue(CharacterListState.Loading)
-                    val response = charactersApi.getCharacters(page)
-                    val results = response.results
-                    callback(results)
-                    status.postValue(CharacterListState.Idle)
-                }
-            }
+        dataSource = CharactersPageDataSource { page, callback -> loadList(page, callback) }
         val factory = object : DataSource.Factory<Int, CharacterDto>() {
             override fun create() = dataSource
         }
         LivePagedListBuilder<Int, CharacterDto>(factory, 20).build()
+    }
+
+    fun loadList(
+        page: Int, callback: (List<CharacterDto>) -> Unit
+    ) {
+        viewModelScope.launch(handler) {
+            status.postValue(CharacterListState.Loading)
+            val results = charactersApi.getCharacters(page)
+            callback(results)
+            status.postValue(CharacterListState.Idle)
+        }
     }
 
     fun retry() {

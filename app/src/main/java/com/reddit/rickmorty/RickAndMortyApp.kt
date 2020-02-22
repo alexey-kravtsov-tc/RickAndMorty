@@ -1,7 +1,7 @@
 package com.reddit.rickmorty
 
 import android.app.Application
-import com.reddit.rickmorty.domain.CharactersRepository
+import com.reddit.rickmorty.domain.FetchCharactersUseCase
 import com.reddit.rickmorty.model.CharactersApiInterface
 import com.reddit.rickmorty.ui.CharactersListViewModel
 import org.koin.android.ext.koin.androidContext
@@ -34,7 +34,7 @@ class RickAndMortyApp : Application() {
 
         factory { get<Retrofit>().create(CharactersApiInterface::class.java) }
 
-        single { CharactersRepository(get()) }
+        single { FetchCharactersUseCase(get()) }
 
         single<CoroutineContextProvider> { CoroutineContextProviderLive() }
 
