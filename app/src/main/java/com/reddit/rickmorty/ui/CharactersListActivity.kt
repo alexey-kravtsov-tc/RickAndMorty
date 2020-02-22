@@ -2,6 +2,7 @@ package com.reddit.rickmorty.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.reddit.rickmorty.R
@@ -17,7 +18,12 @@ class CharactersListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val adapter = CharactersAdapter()
+        val adapter = CharactersAdapter{ character ->
+            // TODO: start details view here or expand character view item
+            Toast.makeText(applicationContext,
+                "Details of ${character.name} will be shown here :)",
+                Toast.LENGTH_SHORT).show()
+        }
         characterList.adapter = adapter
 
         vm.charactersList.observe(this, Observer {
