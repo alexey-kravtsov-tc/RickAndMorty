@@ -22,7 +22,7 @@ class CharactersListViewModel(
 
     lateinit var dataSource: CharactersPageDataSource
 
-    val status = MutableLiveData<CharacterListState>(CharacterListState.Idle)
+    val status = MutableLiveData<CharacterListState>()
 
     val charactersList: LiveData<PagedList<CharacterDto>> by lazy {
         dataSource = CharactersPageDataSource { page, callback -> loadList(page, callback) }
@@ -32,18 +32,19 @@ class CharactersListViewModel(
         LivePagedListBuilder<Int, CharacterDto>(factory, 20).build()
     }
 
-    fun loadList(
-        page: Int, callback: (List<CharacterDto>) -> Unit
-    ) {
+    //TODO: this logic should be actually moved to the Data Source
+    fun loadList(page: Int, callback: (List<CharacterDto>) -> Unit) {
+
         viewModelScope.launch(handler) {
             status.postValue(CharacterListState.Loading)
             val results = charactersApi.getCharacters(page)
             callback(results)
-            status.postValue(CharacterListState.Idle)
+            status.postValue(CharacterListState.Data)
         }
     }
 
     fun retry() {
+        //TODO: retry better is better to be placed in recycler view footer
         dataSource.retry()
     }
 

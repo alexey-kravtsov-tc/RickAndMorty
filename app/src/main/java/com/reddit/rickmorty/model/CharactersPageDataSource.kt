@@ -4,6 +4,7 @@ import androidx.paging.PageKeyedDataSource
 import com.reddit.rickmorty.model.dto.CharacterDto
 
 class CharactersPageDataSource(
+    //TODO: pass UseCase, coroutine scope and context and perform action in this class
     val loadPage : (Int, (List<CharacterDto>) -> Unit) -> Unit
 ) : PageKeyedDataSource<Int, CharacterDto>() {
 

@@ -12,6 +12,7 @@ import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -49,18 +50,25 @@ class ViewModelTest {
     }
 
     @Test
+    fun no_fetching_returns_no_state() {
+        assertNull(viewModel.status.value)
+    }
+
+    @Test
     fun empty_list_returns_data_state() {
         coEvery { useCase.getCharacters(1) } returns emptyList()
         viewModel.loadList(1) {}
-        val result = viewModel.status.value as? CharacterListState.Idle
+        val result = viewModel.status.value as? CharacterListState.Data
         assertNotNull(result)
     }
 
     @Test
-    fun exception_while_loading_returns_error_state() {
-        coEvery { useCase.getCharacters(1) } throws Exception("test exception")
+    fun exception_in_fetch_returns_error_state() {
+        val errorMessage = "test exception"
+        coEvery { useCase.getCharacters(1) } throws Exception(errorMessage)
         viewModel.loadList(1) {}
         val result = viewModel.status.value as? CharacterListState.Error
         assertNotNull(result)
+        assertEquals(errorMessage, result?.throwable?.message)
     }
 }

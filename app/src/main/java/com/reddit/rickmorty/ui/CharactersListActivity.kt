@@ -29,7 +29,7 @@ class CharactersListActivity : AppCompatActivity() {
         }
 
         vm.status.observe(this, Observer {
-            placeholder?.isVisible = it !is CharacterListState.Idle
+            placeholder?.isVisible = it !is CharacterListState.Data
             retry?.isVisible = it is CharacterListState.Error
             placeholder.text =
                 when (it) {
