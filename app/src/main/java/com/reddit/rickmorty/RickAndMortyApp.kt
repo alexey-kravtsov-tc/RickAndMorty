@@ -34,7 +34,7 @@ class RickAndMortyApp : Application() {
 
         factory { get<Retrofit>().create(CharactersApiInterface::class.java) }
 
-        single { FetchCharactersUseCase(get()) }
+        single { FetchCharactersUseCase(get(), get()) }
 
         single<CoroutineContextProvider> { CoroutineContextProviderLive() }
 

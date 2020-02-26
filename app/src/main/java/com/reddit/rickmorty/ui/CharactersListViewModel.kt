@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 class CharactersListViewModel(
     contextProvider: CoroutineContextProvider,
-    private val charactersApi: FetchCharactersUseCase
+    private val useCase: FetchCharactersUseCase
 ) : ViewModel() {
 
     lateinit var dataSource: CharactersPageDataSource
@@ -36,10 +36,9 @@ class CharactersListViewModel(
     fun loadList(page: Int, callback: (List<CharacterDto>) -> Unit) {
 
         viewModelScope.launch(handler) {
-            status.postValue(CharacterListState.Loading)
-            val results = charactersApi.getCharacters(page)
-            callback(results)
-            status.postValue(CharacterListState.Data)
+            status.value = CharacterListState.Loading
+            callback(useCase.getCharacters(page))
+            status.value = CharacterListState.Data
         }
     }
 
@@ -48,7 +47,7 @@ class CharactersListViewModel(
         dataSource.retry()
     }
 
-    private val handler = contextProvider.IO + CoroutineExceptionHandler { _, t ->
+    private val handler = contextProvider.Main + CoroutineExceptionHandler { _, t ->
         Log.e(this::javaClass.name, "Error", t)
         status.postValue(CharacterListState.Error(t))
     }

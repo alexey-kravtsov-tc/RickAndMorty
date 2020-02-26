@@ -64,7 +64,7 @@ class ViewModelTest {
 
     @Test
     fun exception_in_fetch_returns_error_state() {
-        val errorMessage = "test exception"
+        val errorMessage = "this exception should not go outer scope"
         coEvery { useCase.getCharacters(1) } throws Exception(errorMessage)
         viewModel.loadList(1) {}
         val result = viewModel.status.value as? CharacterListState.Error
