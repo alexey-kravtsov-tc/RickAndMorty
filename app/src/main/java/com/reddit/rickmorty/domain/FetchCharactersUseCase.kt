@@ -12,7 +12,7 @@ class FetchCharactersUseCase(
 
     //TODO: to apply offline storage, database as a single source of truth should be placed here
     //      therefore UI will receive updates from DB only and all data from network goes to DB
-    suspend fun getCharacters(page: Int): List<CharacterDto> = withContext(provider.IO) {
+    suspend operator fun invoke(page: Int): List<CharacterDto> = withContext(provider.IO) {
         api.getAllCharacters(page).results
     }
 }

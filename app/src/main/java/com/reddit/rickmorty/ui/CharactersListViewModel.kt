@@ -37,7 +37,7 @@ class CharactersListViewModel(
 
         viewModelScope.launch(handler) {
             status.value = CharacterListState.Loading
-            callback(useCase.getCharacters(page))
+            callback(useCase(page))
             status.value = CharacterListState.Data
         }
     }
