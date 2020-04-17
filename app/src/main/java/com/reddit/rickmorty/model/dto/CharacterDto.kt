@@ -2,6 +2,7 @@ package com.reddit.rickmorty.model.dto
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.reddit.rickmorty.R
 import com.squareup.picasso.Picasso
 
 class CharacterDto(
@@ -15,7 +16,7 @@ class CharacterDto(
         @JvmStatic
         @BindingAdapter("imageSource")
         fun ImageView.setImageSource(url: String?) {
-            url.let { Picasso.get().load(it).into(this) }
+            url.let { Picasso.get().load(it).placeholder(R.drawable.ic_person).into(this) }
         }
     }
 }
