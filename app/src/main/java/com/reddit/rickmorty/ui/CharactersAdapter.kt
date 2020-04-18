@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.reddit.rickmorty.R
 import com.reddit.rickmorty.databinding.ItemCharacterBinding
 import com.reddit.rickmorty.model.dto.CharacterDto
+import kotlinx.android.synthetic.main.item_character.view.*
 
 class CharactersAdapter(private val onCharacterClick: (CharacterDto, Navigator.Extras) -> Unit) :
     PagedListAdapter<CharacterDto, CharactersAdapter.CharacterViewHolder>(CharacterDiff()) {
@@ -31,7 +32,7 @@ class CharactersAdapter(private val onCharacterClick: (CharacterDto, Navigator.E
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.itemView.rootView.transitionName = "transition${getItem(position)?.id}"
+        holder.itemView.avatar.transitionName = "transition${getItem(position)?.id}"
         holder.binding?.character = getItem(position)
     }
 
@@ -46,7 +47,7 @@ class CharactersAdapter(private val onCharacterClick: (CharacterDto, Navigator.E
         init {
             view.setOnClickListener {
                 val extras = FragmentNavigator.Extras.Builder()
-                extras.addSharedElement(view, "item_transformation")
+                extras.addSharedElement(view.avatar, "item_transformation")
                 binding?.character?.let { onClick(it, extras.build()) }
             }
         }
