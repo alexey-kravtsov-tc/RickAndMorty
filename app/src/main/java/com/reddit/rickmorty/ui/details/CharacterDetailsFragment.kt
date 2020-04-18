@@ -10,7 +10,6 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.reddit.rickmorty.databinding.FragmentCharactersDetailsBinding
 import com.reddit.rickmorty.model.dto.CharacterDto
-import com.reddit.rickmorty.ui.CharacterDetailsFragmentArgs
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 

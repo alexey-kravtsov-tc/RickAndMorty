@@ -11,7 +11,6 @@ import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.reddit.rickmorty.R
 import com.reddit.rickmorty.ui.details.CharactersAdapter
-import com.reddit.rickmorty.ui.CharactersListFragmentDirections
 import kotlinx.android.synthetic.main.fragment_characters_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.IOException
@@ -37,7 +36,10 @@ class CharactersListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val adapter = CharactersAdapter { character, extras ->
             val action = CharactersListFragmentDirections.actionOpenDetails(character)
-            Navigation.findNavController(view).navigate(action, extras)
+            Navigation.findNavController(view).let {
+                if (it.currentDestination?.id == R.id.charactersListFragment)
+                    it.navigate(action, extras)
+            }
         }
         characterList.apply {
             this.adapter = adapter
