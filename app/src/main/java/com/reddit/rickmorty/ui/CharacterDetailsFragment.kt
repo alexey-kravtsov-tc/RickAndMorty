@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
-import com.reddit.rickmorty.R
+import com.reddit.rickmorty.databinding.FragmentCharactersDetailsBinding
 import com.reddit.rickmorty.model.dto.CharacterDto
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
@@ -19,14 +19,17 @@ class CharacterDetailsFragment: Fragment() {
     private val vm: CharacterDetailsViewModel by viewModel { parametersOf(args.character)  }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_characters_details, container, false)
-    }
+    ): View? = FragmentCharactersDetailsBinding.inflate(inflater, container, false).also {
+        it.vm = vm
+        it.lifecycleOwner = this
+    }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
     }
 
