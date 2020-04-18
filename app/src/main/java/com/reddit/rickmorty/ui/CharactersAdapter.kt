@@ -31,7 +31,7 @@ class CharactersAdapter(private val onCharacterClick: (CharacterDto, Navigator.E
     }
 
     override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-        holder.itemView.transitionName = "transition$position"
+        holder.itemView.rootView.transitionName = "transition${getItem(position)?.id}"
         holder.binding?.character = getItem(position)
     }
 
