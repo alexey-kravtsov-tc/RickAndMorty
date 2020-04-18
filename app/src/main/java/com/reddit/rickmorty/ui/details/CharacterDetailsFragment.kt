@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.reddit.rickmorty.databinding.FragmentCharactersDetailsBinding
-import com.reddit.rickmorty.model.dto.CharacterDto
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -38,7 +36,3 @@ class CharacterDetailsFragment: Fragment() {
 
 }
 
-class CharacterDetailsViewModel(val character: CharacterDto): ViewModel() {
-
-
-}
