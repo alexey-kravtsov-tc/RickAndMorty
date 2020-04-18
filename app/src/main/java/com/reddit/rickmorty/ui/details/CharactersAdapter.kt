@@ -1,4 +1,4 @@
-package com.reddit.rickmorty.ui
+package com.reddit.rickmorty.ui.details
 
 import android.view.LayoutInflater
 import android.view.View

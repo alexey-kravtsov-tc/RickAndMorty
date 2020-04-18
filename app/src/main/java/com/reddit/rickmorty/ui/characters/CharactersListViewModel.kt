@@ -1,4 +1,4 @@
-package com.reddit.rickmorty.ui
+package com.reddit.rickmorty.ui.characters
 
 import android.util.Log
 import androidx.lifecycle.LiveData

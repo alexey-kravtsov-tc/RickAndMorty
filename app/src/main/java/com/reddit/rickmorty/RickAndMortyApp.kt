@@ -4,8 +4,8 @@ import android.app.Application
 import com.reddit.rickmorty.domain.FetchCharactersUseCase
 import com.reddit.rickmorty.model.CharactersApiInterface
 import com.reddit.rickmorty.model.dto.CharacterDto
-import com.reddit.rickmorty.ui.CharacterDetailsViewModel
-import com.reddit.rickmorty.ui.CharactersListViewModel
+import com.reddit.rickmorty.ui.details.CharacterDetailsViewModel
+import com.reddit.rickmorty.ui.characters.CharactersListViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.android.viewmodel.dsl.viewModel

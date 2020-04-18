@@ -1,4 +1,4 @@
-package com.reddit.rickmorty.ui
+package com.reddit.rickmorty.ui.characters
 
 sealed class CharacterListState {
     object Data : CharacterListState()

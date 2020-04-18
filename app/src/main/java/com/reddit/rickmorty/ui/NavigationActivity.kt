@@ -6,7 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.reddit.rickmorty.R
 
-class CharactersListActivity : AppCompatActivity() {
+class NavigationActivity : AppCompatActivity() {
 
     private lateinit var navController: NavController
 

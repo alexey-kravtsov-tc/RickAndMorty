@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.reddit.rickmorty.domain.FetchCharactersUseCase
-import com.reddit.rickmorty.ui.CharacterListState
-import com.reddit.rickmorty.ui.CharactersListViewModel
+import com.reddit.rickmorty.ui.characters.CharacterListState
+import com.reddit.rickmorty.ui.characters.CharactersListViewModel
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK

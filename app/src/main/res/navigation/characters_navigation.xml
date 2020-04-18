@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/charactersListFragment"
-        android:name="com.reddit.rickmorty.ui.CharactersListFragment"
+        android:name="com.reddit.rickmorty.ui.characters.CharactersListFragment"
         android:label="fragment_chatacters_list"
         tools:layout="@layout/fragment_characters_list">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/characterDetailsFragment"
-        android:name="com.reddit.rickmorty.ui.CharacterDetailsFragment"
+        android:name="com.reddit.rickmorty.ui.details.CharacterDetailsFragment"
         android:label="CharacterDetailsFragment"
         tools:layout="@layout/fragment_characters_details">
         <argument

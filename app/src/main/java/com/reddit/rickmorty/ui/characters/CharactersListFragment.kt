@@ -1,4 +1,4 @@
-package com.reddit.rickmorty.ui
+package com.reddit.rickmorty.ui.characters
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.transition.TransitionInflater
 import com.reddit.rickmorty.R
+import com.reddit.rickmorty.ui.details.CharactersAdapter
+import com.reddit.rickmorty.ui.CharactersListFragmentDirections
 import kotlinx.android.synthetic.main.fragment_characters_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import java.io.IOException
