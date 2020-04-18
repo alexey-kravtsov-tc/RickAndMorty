@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 
 class CharactersListViewModel(
     contextProvider: CoroutineContextProvider,
-    private val useCase: FetchCharactersUseCase
+    private val fetchCharacters: FetchCharactersUseCase
 ) : ViewModel() {
 
     lateinit var dataSource: CharactersPageDataSource
@@ -37,7 +37,7 @@ class CharactersListViewModel(
 
         viewModelScope.launch(handler) {
             status.value = CharacterListState.Loading
-            callback(useCase(page))
+            callback(fetchCharacters(page))
             status.value = CharacterListState.Data
         }
     }
