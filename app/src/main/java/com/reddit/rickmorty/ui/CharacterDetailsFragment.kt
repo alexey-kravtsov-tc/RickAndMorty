@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.navArgs
+import androidx.transition.TransitionInflater
 import com.reddit.rickmorty.databinding.FragmentCharactersDetailsBinding
 import com.reddit.rickmorty.model.dto.CharacterDto
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -25,6 +26,8 @@ class CharacterDetailsFragment: Fragment() {
     ): View? = FragmentCharactersDetailsBinding.inflate(inflater, container, false).also {
         it.vm = vm
         it.lifecycleOwner = this
+        sharedElementEnterTransition = TransitionInflater.from(context)
+            .inflateTransition(android.R.transition.move)?.apply { duration = 200 }
     }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

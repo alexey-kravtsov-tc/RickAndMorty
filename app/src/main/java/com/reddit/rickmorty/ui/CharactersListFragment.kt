@@ -1,15 +1,13 @@
 package com.reddit.rickmorty.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-
 import com.reddit.rickmorty.R
 import kotlinx.android.synthetic.main.fragment_characters_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -28,9 +26,9 @@ class CharactersListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CharactersAdapter{ character ->
+        val adapter = CharactersAdapter { character, extras ->
             val action = CharactersListFragmentDirections.actionOpenDetails(character)
-            Navigation.findNavController(view).navigate(action)
+            Navigation.findNavController(view).navigate(action, extras)
         }
         characterList.adapter = adapter
 
@@ -60,5 +58,4 @@ class CharactersListFragment : Fragment() {
             else -> R.string.generic_error
         }
     )
-
 }
