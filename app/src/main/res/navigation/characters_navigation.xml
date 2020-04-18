@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/characters_navifation"
+    app:startDestination="@id/charactersListFragment">
+
+    <fragment
+        android:id="@+id/charactersListFragment"
+        android:name="com.reddit.rickmorty.ui.CharactersListFragment"
+        android:label="fragment_chatacters_list"
+        tools:layout="@layout/fragment_characters_list">
+        <action
+            android:id="@+id/action_open_details"
+            app:destination="@id/characterDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:name="com.reddit.rickmorty.ui.CharacterDetailsFragment"
+        android:label="CharacterDetailsFragment"
+        tools:layout="@layout/fragment_characters_details">
+        <argument
+            android:name="character"
+            app:argType="com.reddit.rickmorty.model.dto.CharacterDto" />
+    </fragment>
+</navigation>
