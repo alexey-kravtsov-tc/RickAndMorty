@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selected"
+    android:oneshot="false">
+    <item android:drawable="@drawable/ic_frame1" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame2" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame3" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame4" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame5" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame6" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame7" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame8" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame9" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame10" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame11" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame12" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame12" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame11" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame10" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame9" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame8" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame7" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame6" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame5" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame4" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame3" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame2" android:duration="50" />
+    <item android:drawable="@drawable/ic_frame1" android:duration="50" />
+</animation-list>
