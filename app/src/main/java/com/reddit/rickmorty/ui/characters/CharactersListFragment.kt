@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
@@ -13,7 +12,6 @@ import com.reddit.rickmorty.R
 import com.reddit.rickmorty.ui.details.CharactersAdapter
 import kotlinx.android.synthetic.main.fragment_characters_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import java.io.IOException
 
 class CharactersListFragment : Fragment() {
 
@@ -41,6 +39,7 @@ class CharactersListFragment : Fragment() {
                     it.navigate(action, extras)
             }
         }
+
         characterList.apply {
             this.adapter = adapter
             //workaround for back animation
@@ -55,26 +54,8 @@ class CharactersListFragment : Fragment() {
             adapter.submitList(it)
         })
 
-        retry.setOnClickListener {
-            vm.retry()
-        }
-
         vm.status.observe(viewLifecycleOwner, Observer {
-            placeholder?.isVisible = it !is CharacterListState.Data
-            retry?.isVisible = it is CharacterListState.Error
-            placeholder.text =
-                when (it) {
-                    is CharacterListState.Error -> getErrorMessage(it.throwable)
-                    is CharacterListState.Loading -> getString(R.string.loading)
-                    else -> ""
-                }
+            adapter.setState(it)
         })
     }
-
-    private fun getErrorMessage(throwable: Throwable) = getString(
-        when (throwable) {
-            is IOException -> R.string.network_error
-            else -> R.string.generic_error
-        }
-    )
 }
